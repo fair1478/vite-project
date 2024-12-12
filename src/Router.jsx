@@ -4,27 +4,27 @@ import {
   Navigate,
   RouterProvider,
 } from "react-router-dom";
-import { NavbarWithSearch } from "./layout/Layout.jsx";
-// import { AnonymousRoutes } from "./components/AnonymousRoutes.jsx";
+import { SearchBarWithSticky } from "./layout/Layout.jsx";
 import { Spinner } from "@material-tailwind/react";
-
 const HomePage = lazy(() => import("./pages/HomePage.jsx"));
-
+const PropertyPage = lazy(() => import("./pages/PropertyPage.jsx"));
 const router = createBrowserRouter([
   {
-    element: <NavbarWithSearch />,
+    element: <SearchBarWithSticky />,
     children: [
       {
         path: "/",
         element: (
-          <Suspense
-            fallback={
-              <div>
-                <Spinner className="h-8 w-8" />
-              </div>
-            }
-          >
+          <Suspense fallback={<Spinner />}>
             <HomePage />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/property",
+        element: (
+          <Suspense fallback={<Spinner />}>
+            <PropertyPage />
           </Suspense>
         ),
       },
