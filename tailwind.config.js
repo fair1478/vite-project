@@ -97,6 +97,8 @@ export default withMT({
         },
         primary: "#F77A32",
         bg: "#F8F5F4",
+        primaryDark: "#E73D00",
+        primaryLight: "#F9ECE8",
       },
     },
   },
