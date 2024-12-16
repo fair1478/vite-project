@@ -27,7 +27,7 @@ export function GalleryCardPagination({ cards = [], cardsPerPage = 3 }) {
   };
 
   return (
-    <div className="container flex gap-x-4 mx-auto px-4">
+    <div className="flex gap-x-4 w-full">
       <div className="self-center justify-center items-center space-x-4">
         <IconButton variant="text" onClick={handlePrevious}>
           <ChevronLeftIcon className="h-6 w-6  text-[#5F6368]" />
@@ -45,6 +45,7 @@ export function GalleryCardPagination({ cards = [], cardsPerPage = 3 }) {
             price={card.price}
             pricePerUnit={card.pricePerUnit}
             pricePerRiai={card.pricePerRiai}
+            finalPrice={card.finalPrice}
             className="w-full"
           />
         ))}

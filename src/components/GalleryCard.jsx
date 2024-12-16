@@ -1,6 +1,7 @@
 import {
   Card,
   CardBody,
+  CardFooter,
   CardHeader,
   Carousel,
   Typography,
@@ -15,14 +16,15 @@ export function GalleryCard({
   price = "",
   pricePerUnit = "",
   pricePerRiai = "",
+  finalPrice = "",
   className = "",
 }) {
   return (
-    <Card shadow={false} className={className}>
+    <Card shadow={false} className={"h-[580px] flex flex-col ${className}"}>
       <CardHeader
         shadow={false}
         floated={false}
-        className="rounded-b-none h-96"
+        className="rounded-b-none h-[384px]"
       >
         <Carousel
           loop={true}
@@ -82,14 +84,14 @@ export function GalleryCard({
           ))}
         </Carousel>
       </CardHeader>
-      <CardBody>
-        <Typography className="text-xl font-bold text-[#131D10] mb-2">
+      <CardBody className="flex-grow flex flex-col justify-start">
+        <Typography className="!text-h3 text-[#131D10] mb-2">
           {title}
         </Typography>
-        <div className="flex gap-2 items-center">
+        <div className="flex gap-1 items-center">
           <svg
-            width="16"
-            height="20"
+            width="13"
+            height="16"
             viewBox="0 0 16 20"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -99,10 +101,32 @@ export function GalleryCard({
               fill="#5F6368"
             />
           </svg>
-          <h3 className="text-body2 text-[#294023]">{location}</h3>
+          <Typography className="!text-body1 text-[#294023]">
+            {location}
+          </Typography>
         </div>
-        <h3 className="text-body2 text-[#294023]">{bodyText}</h3>
+        <Typography className="!text-body1 text-[#60675E]">
+          {bodyText}
+        </Typography>
       </CardBody>
+      <CardFooter className="flex justify-between items-end">
+        <div className="flex flex-col h-full gap-1 items-start">
+          <Typography className="!text-body1 text-[#162113]">
+            {pricePerUnit} บาท/ตารางวา
+          </Typography>
+          <Typography className="!text-body1 text-[#162113]">
+            {pricePerRiai} บาท/ไร่
+          </Typography>
+        </div>
+        <div className="flex flex-col items-end">
+          <Typography className="!text-h3 text-[#D8C9C4] line-through">
+            ยกแปลง {price} บาท
+          </Typography>
+          <Typography className="!text-h2 text-primaryDark">
+            ยกแปลง {finalPrice} บาท
+          </Typography>
+        </div>
+      </CardFooter>
     </Card>
   );
 }

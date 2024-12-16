@@ -23,48 +23,56 @@ export default withMT({
         "36px", // 36px
         {
           fontWeight: "600", // Semibold
+          lineHeight: "44px", // 48px
         },
       ],
       h1: [
         "24px", // 24px
         {
           fontWeight: "600", // Semibold
+          lineHeight: "32px", // 32px
         },
       ],
       h2: [
         "20px", // 20px
         {
           fontWeight: "600", // Semibold
+          lineHeight: "28px", // 28px
         },
       ],
       h3: [
         "16px", // 16px
         {
           fontWeight: "600", // Semibold
+          lineHeight: "24px", // 24px
         },
       ],
       h4: [
         "14px", // 14px
         {
           fontWeight: "600", // Semibold
+          lineHeight: "22px", // 20px
         },
       ],
       paragraph: [
         "20px", // 20px
         {
           fontWeight: "400", // Regular
+          lineHeight: "28px", // 28px
         },
       ],
       body1: [
         "14px", // 14px
         {
           fontWeight: "400", // Regular
+          lineHeight: "22px", // 22px
         },
       ],
       body2: [
         "12px", // 12px
         {
           fontWeight: "400", // Regular
+          lineHeight: "20px", // 20px
         },
       ],
       button1: [
@@ -78,6 +86,7 @@ export default withMT({
         "14px", // 14px
         {
           fontWeight: "500", // Medium
+          lineHeight: "22px", // 20px
         },
       ],
     },
@@ -96,9 +105,14 @@ export default withMT({
           900: "#0c4a6e",
         },
         primary: "#F77A32",
+        secondary: "#F9ECE8",
         bg: "#F8F5F4",
         primaryDark: "#E73D00",
-        primaryLight: "#F9ECE8",
+        primaryLight: "#F9D6CB",
+        textDark: "#3A322D",
+      },
+      boxShadow: {
+        1: "0px 6px 14px rgba(137, 39, 9, 0.25)",
       },
     },
   },

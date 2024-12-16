@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Navbar, Input, Typography, Button } from "@material-tailwind/react";
+import { Button } from "@material-tailwind/react";
 import { Outlet } from "react-router-dom";
 import logo from "../assets/Logo.svg";
+import Footer from "../components/Footer";
 
 export function SearchBarWithSticky() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -30,16 +31,15 @@ export function SearchBarWithSticky() {
               <img src={logo} alt="logo" className="h-12" />
             </a>
           </div>
-          <Button
-            as="a"
-            href="/contact"
-            className="rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
-          >
-            ติดต่อเรา
-          </Button>{" "}
+          <a as="a" href="/contract">
+            <Button className="rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600">
+              ติดต่อเรา
+            </Button>
+          </a>
         </nav>
       </div>
       <Outlet />
+      <Footer />
     </div>
   );
 }

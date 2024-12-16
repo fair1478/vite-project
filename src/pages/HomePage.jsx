@@ -1,5 +1,5 @@
 import { GalleryCardPagination } from "../components/GalleryCardPagination";
-
+import { Button, Typography } from "@material-tailwind/react";
 function HomePage() {
   const sampleCards = [
     {
@@ -9,36 +9,41 @@ function HomePage() {
       ],
       title: "ที่ดินติดแม่น้ำนครนายก 45 เมตร รวม 2 โฉนด",
       bodyText:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, consequat nibh.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, consequat nibh.",
       location: "นครนายก",
-      price: "5,000,000",
-      pricePerUnit: "500,000",
-      pricePerRiai: "1,000,000",
+      price: "1,800,000",
+      pricePerUnit: "2,225",
+      pricePerRiai: "890,000",
+      finalPrice: "1,780,000",
     },
     {
       images: [
         "https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80",
+        "https://s3-alpha-sig.figma.com/img/46b7/1fc0/c63b506d65d00af659b04b8a2a152697?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=bGWQO~8mRUT38AsA3S1kHlqtneBz0czKPuQRZ76BatBP6JmQRGhFTYb0VXTYZL4VLblRDFIk1qyXTwFfh6msukO8vU~0M0ISwNfgfjLrVZZttcj1HLqN1rKXopgeWNwutGLxPjm5wYd~m-8uMnse6qI7Zml~-FzoakKG7zAsdIKQ6fmhUOWrstm3ORA47hlhHSLF329SDs-9TYedbrWThHNZ4dQMFsrIN6u48Zfu5OMzQdil~MYHxC4h1wAFpSqqKmz0pEYfX4y52XshX7XyvdZnCJHR~2HbxHbgw~GiUYKAjjAdzZzYQzFQzic~w~siePrxgiN2MoC~BEf~X8Tt7A__",
       ],
       title: "Another Property Listing",
       bodyText:
-      "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       location: "นครนายก",
-      price: "5,000,000",
-      pricePerUnit: "500,000",
-      pricePerRiai: "1,000,000",
+      price: "1,800,000",
+      pricePerUnit: "2,225",
+      pricePerRiai: "890,000",
+      finalPrice: "1,780,000",
     },
     // Add more cards as needed
     {
       images: [
-        "https://images.unsplash.com/photo-1523755231516-e43fd2e8dca0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+        "https://images.unsplash.com/photo-1432462770865-65b70566d673?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+        "https://s3-alpha-sig.figma.com/img/46b7/1fc0/c63b506d65d00af659b04b8a2a152697?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=bGWQO~8mRUT38AsA3S1kHlqtneBz0czKPuQRZ76BatBP6JmQRGhFTYb0VXTYZL4VLblRDFIk1qyXTwFfh6msukO8vU~0M0ISwNfgfjLrVZZttcj1HLqN1rKXopgeWNwutGLxPjm5wYd~m-8uMnse6qI7Zml~-FzoakKG7zAsdIKQ6fmhUOWrstm3ORA47hlhHSLF329SDs-9TYedbrWThHNZ4dQMFsrIN6u48Zfu5OMzQdil~MYHxC4h1wAFpSqqKmz0pEYfX4y52XshX7XyvdZnCJHR~2HbxHbgw~GiUYKAjjAdzZzYQzFQzic~w~siePrxgiN2MoC~BEf~X8Tt7A__",
       ],
       title: "Third Property Listing",
       bodyText:
-      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
       location: "นครนายก",
-      price: "5,000,000",
-      pricePerUnit: "500,000",
-      pricePerRiai: "1,000,000",
+      price: "1,800,000",
+      pricePerUnit: "2,225",
+      pricePerRiai: "890,000",
+      finalPrice: "1,780,000",
     },
     {
       images: [
@@ -46,11 +51,12 @@ function HomePage() {
       ],
       title: "Another Property Listing",
       bodyText:
-      "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       location: "นครนายก",
-      price: "5,000,000",
-      pricePerUnit: "500,000",
-      pricePerRiai: "1,000,000",
+      price: "1,800,000",
+      pricePerUnit: "2,225",
+      pricePerRiai: "890,000",
+      finalPrice: "1,780,000",
     },
     {
       images: [
@@ -58,11 +64,12 @@ function HomePage() {
       ],
       title: "Another Property Listing",
       bodyText:
-      "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       location: "นครนายก",
-      price: "5,000,000",
-      pricePerUnit: "500,000",
-      pricePerRiai: "1,000,000",
+      price: "1,800,000",
+      pricePerUnit: "2,225",
+      pricePerRiai: "890,000",
+      finalPrice: "1,780,000",
     },
     {
       images: [
@@ -70,11 +77,12 @@ function HomePage() {
       ],
       title: "Another Property Listing",
       bodyText:
-      "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       location: "นครนายก",
-      price: "5,000,000",
-      pricePerUnit: "500,000",
-      pricePerRiai: "1,000,000",
+      price: "1,800,000",
+      pricePerUnit: "2,225",
+      pricePerRiai: "890,000",
+      finalPrice: "1,780,000",
     },
     {
       images: [
@@ -82,11 +90,12 @@ function HomePage() {
       ],
       title: "Another Property Listing",
       bodyText:
-      "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       location: "นครนายก",
-      price: "5,000,000",
-      pricePerUnit: "500,000",
-      pricePerRiai: "1,000,000",
+      price: "1,800,000",
+      pricePerUnit: "2,225",
+      pricePerRiai: "890,000",
+      finalPrice: "1,780,000",
     },
     {
       images: [
@@ -94,22 +103,121 @@ function HomePage() {
       ],
       title: "Another Property Listing",
       bodyText:
-      "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       location: "นครนายก",
-      price: "5,000,000",
-      pricePerUnit: "500,000",
-      pricePerRiai: "1,000,000",
+      price: "1,800,000",
+      pricePerUnit: "2,225",
+      pricePerRiai: "890,000",
+      finalPrice: "1,780,000",
     },
   ];
 
   return (
     <div className="min-h-screen mx-[120px]">
-      <div className="flex">
-        <h1 className="text-4xl font-bold text-gray-900">Gallery</h1>
+      <div className="flex flex-col gap-y-16 pb-64">
+        <dv>
+          <div className="flex justify-between pb-6">
+            <h1 className="text-h1">ที่ดินยอดนิยม</h1>
+            <a as="a" href="/properties">
+              <Button
+                variant="filled"
+                color="white"
+                className="px-6 py-1 !text-button2 rounded-full shadow-none"
+              >
+                ดูทั้งหมด
+              </Button>
+            </a>
+          </div>
+          <div className="flex flex-col gap-4 w-full">
+            <GalleryCardPagination cards={sampleCards} cardsPerPage={3} />
+          </div>
+        </dv>
+        <div>
+          <div className="flex justify-between pb-6">
+            <h1 className="text-h1">ที่ดินใหม่ล่าสุด</h1>
+            <a as="a" href="/properties">
+              <Button
+                variant="filled"
+                color="white"
+                className="px-6 py-1 !text-button2 rounded-full shadow-none"
+              >
+                ดูทั้งหมด
+              </Button>
+            </a>
+          </div>
+          <div className=" gap-4 w-full">
+            <GalleryCardPagination cards={sampleCards} cardsPerPage={3} />
+          </div>
+        </div>
+        <div>
+          <div className="flex justify-between pb-6">
+            <h1 className="text-h1">ที่ดินลดราคาแรง</h1>
+            <a as="a" href="/properties">
+              <Button
+                variant="filled"
+                color="white"
+                className="px-6 py-1 !text-button2 rounded-full shadow-none"
+              >
+                ดูทั้งหมด
+              </Button>
+            </a>
+          </div>
+          <div className=" gap-4 w-full">
+            <GalleryCardPagination cards={sampleCards} cardsPerPage={3} />
+          </div>
+        </div>
       </div>
-      <div className="flex flex-col items-center gap-4">
-        <GalleryCardPagination cards={sampleCards} cardsPerPage={3} />
-        <GalleryCardPagination cards={sampleCards} cardsPerPage={3} />
+      <div className="flex flex-col justify-center items-center rounded-[32px] mb-72 py-[50px] px-[359px] gap-[35px] mt-16 bg-[#F0884C] shadow-1">
+        <div className="flex flex-col gap-8">
+          <div className="flex justify-center">
+            <img src="/src/assets/mae-kai.png" alt="mae-kai" />
+          </div>
+          <div className="flex flex-col justify-center gap-4">
+            <Typography variant="h1" className="text-bg text-center !text-h1">
+              ทำความรู้จักแม่ไก่
+            </Typography>
+            <Typography
+              variant="paragraph"
+              className="text-bg text-center !text-paragraph"
+            >
+              แม่ไก่ หรือ นางภิญญาพัชญ์ จากคนกรุงเทพที่สนใจเรื่องอสังหาริมทรัพย์
+              มองเห็นโอกาสในการทำงานที่นครนายก จึงได้เริ่มต้นศึกษา ลงมือทำ
+              อาชีพที่เรียกว่า “นายหน้าขายที่ดิน” จนตอนนี้ขายที่ดินไปแล้วกว่า 30
+              แปลง ใส่ใจลูกค้า ตั้งแต่ขั้นตอนแรกถึงขั้นตอนสุดท้าย
+            </Typography>
+          </div>
+        </div>
+        <div className="flex flex-col justify-center gap-8 py-8">
+          <Typography
+            variant="paragraph"
+            className="text-bg text-center !text-h2"
+          >
+            ช่องทางการติดต่อ
+          </Typography>
+          <div className="flex gap-4 justify-center">
+            <Button
+              className="lowercase !text-paragraph text-[#F3F3F3] bg-[#396BE9] px-[24px] py-[10px] w-[343px] rounded-full"
+              color="blue"
+              variant="filled"
+            >
+              facebook : แม่ไก่ คนธาตุดิน
+            </Button>
+            <Button
+              className="lowercase !text-paragraph text-[#F3F3F3] bg-[#3BC340] px-[24px] py-[10px] w-[343px] rounded-full"
+              color="green"
+              variant="filled"
+            >
+              line : pimpert
+            </Button>
+            <Button
+              className="lowercase !text-paragraph text-[#F3F3F3] bg-[#E75F2E] px-[24px] py-[10px] w-[343px] rounded-full"
+              color="deep-orange"
+              variant="filled"
+            >
+              โทร 064-974-9249
+            </Button>
+          </div>
+        </div>
       </div>
     </div>
   );

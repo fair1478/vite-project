@@ -21,7 +21,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/property",
+        path: "/properties",
         element: (
           <Suspense fallback={<Spinner />}>
             <PropertyPage />

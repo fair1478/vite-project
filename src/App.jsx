@@ -1,11 +1,31 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import { Button, Carousel, ThemeProvider } from "@material-tailwind/react";
+import { ThemeProvider } from "@material-tailwind/react";
 import AppRouter from "./Router.jsx";
 
 function App() {
-  return <AppRouter />;
+  const theme = {
+    button: {
+      styles: {
+        variants: {
+          filled: {
+            white: {
+              backgroud: "bg-[#F9ECE8]",
+              color: "text-primary",
+              shadow: "shadow-none",
+              hover: "hover:bg-primaryLight",
+              focus: "focus:opacity-[0.85]",
+              active: "active:opacity-[0.85]",
+            },
+          },
+        },
+      },
+    },
+  };
+
+  return (
+    <ThemeProvider value={theme}>
+      <AppRouter />
+    </ThemeProvider>
+  );
 }
 
 export default App;
