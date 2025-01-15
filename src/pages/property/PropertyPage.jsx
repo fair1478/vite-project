@@ -64,7 +64,8 @@ function PropertyPage() {
     (property) =>
       (property.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         property.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        property.location.toLowerCase().includes(searchTerm.toLowerCase())) &&
+        property.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        property.bodyText.toLowerCase().includes(searchTerm.toLowerCase())) &&
       (selectedLocation === "" || property.location === selectedLocation) &&
       (selectedTag === "" || property.tags.includes(selectedTag))
   );
