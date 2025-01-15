@@ -115,7 +115,7 @@ function HomePage() {
   return (
     <div className="min-h-screen mx-[120px]">
       <div className="flex flex-col gap-y-16 pb-64">
-        <dv>
+        <div>
           <div className="flex justify-between pb-6">
             <h1 className="text-h1">ที่ดินยอดนิยม</h1>
             <a as="a" href="/properties">
@@ -131,7 +131,7 @@ function HomePage() {
           <div className="flex flex-col gap-4 w-full">
             <GalleryCardPagination cards={sampleCards} cardsPerPage={3} />
           </div>
-        </dv>
+        </div>
         <div>
           <div className="flex justify-between pb-6">
             <h1 className="text-h1">ที่ดินใหม่ล่าสุด</h1>
@@ -199,6 +199,12 @@ function HomePage() {
               className="lowercase !text-paragraph text-[#F3F3F3] bg-[#396BE9] px-[24px] py-[10px] w-[343px] rounded-full"
               color="blue"
               variant="filled"
+              onClick={() =>
+                window.open(
+                  "https://www.facebook.com/pitcha.wichthong",
+                  "_blank"
+                )
+              }
             >
               facebook : แม่ไก่ คนธาตุดิน
             </Button>
@@ -206,6 +212,9 @@ function HomePage() {
               className="lowercase !text-paragraph text-[#F3F3F3] bg-[#3BC340] px-[24px] py-[10px] w-[343px] rounded-full"
               color="green"
               variant="filled"
+              onClick={() =>
+                window.open("https://line.me/ti/p/LeUP5YHMZs", "_blank")
+              }
             >
               line : pimpert
             </Button>
@@ -213,6 +222,7 @@ function HomePage() {
               className="lowercase !text-paragraph text-[#F3F3F3] bg-[#E75F2E] px-[24px] py-[10px] w-[343px] rounded-full"
               color="deep-orange"
               variant="filled"
+              onClick={() => window.open("tel:064-974-9249", "_blank")}
             >
               โทร 064-974-9249
             </Button>

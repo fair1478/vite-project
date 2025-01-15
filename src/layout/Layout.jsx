@@ -32,7 +32,11 @@ export function SearchBarWithSticky() {
             </a>
           </div>
           <a as="a" href="/contract">
-            <Button className="rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600">
+            <Button
+              variant="filled"
+              color="orange"
+              className="rounded-2xl px-6 py-3 text-bg !text-button1"
+            >
               ติดต่อเรา
             </Button>
           </a>
