@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import PropertyCard from "../../components/PropertyCard";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 function PropertyPage() {
   const [properties, setProperties] = useState([]);
@@ -10,50 +11,16 @@ function PropertyPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Sample data
-    const sampleProperties = [
-      {
-        id: 1,
-        title: "Property 1",
-        description: "Description for Property 1",
-        location: "Location 1",
-        imageUrlList: ["url1", "url2"],
-        bodyText: "Body text for Property 1",
-        price: 100000,
-        pricePerUnit: 1000,
-        pricePerRiai: 500,
-        finalPrice: 95000,
-        tags: ["tag1", "tag2"],
-      },
-      {
-        id: 2,
-        title: "Property 2",
-        description: "Description for Property 2",
-        location: "Location 2",
-        imageUrlList: ["url3", "url4"],
-        bodyText: "Body text for Property 2",
-        price: 200000,
-        pricePerUnit: 2000,
-        pricePerRiai: 1000,
-        finalPrice: 190000,
-        tags: ["tag2", "tag4"],
-      },
-      {
-        id: 3,
-        title: "Property 3",
-        description: "Description for Property 3",
-        location: "Location 3",
-        imageUrlList: ["url5", "url6"],
-        bodyText: "Body text for Property 3",
-        price: 300000,
-        pricePerUnit: 3000,
-        pricePerRiai: 1500,
-        finalPrice: 285000,
-        tags: ["tag5", "tag6"],
-      },
-    ];
+    const fetchProperties = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/data");
+        setProperties(response.data);
+      } catch (error) {
+        console.error("Error fetching properties:", error);
+      }
+    };
 
-    setProperties(sampleProperties);
+    fetchProperties();
   }, []);
 
   const handlePropertyClick = (id) => {
@@ -121,6 +88,8 @@ function PropertyPage() {
             imageUrlList={property.imageUrlList}
             title={property.title}
             bodyText={property.bodyText}
+            location={property.location}
+            date={property.date}
             price={property.price}
             pricePerUnit={property.pricePerUnit}
             pricePerRiai={property.pricePerRiai}

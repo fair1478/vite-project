@@ -13,6 +13,7 @@ export function PropertyCard({
   title = "",
   bodyText = "",
   location = "",
+  date = Timestamp.now(),
   price = "",
   pricePerUnit = "",
   pricePerRiai = "",
@@ -106,6 +107,9 @@ export function PropertyCard({
             <Typography className="!text-body1 text-[#294023]">
               {location}
             </Typography>
+          </div>
+          <div className="flex gap-1 items-center">
+            {date}
           </div>
           <Typography className="!text-body1 text-[#60675E]">
             {bodyText}
