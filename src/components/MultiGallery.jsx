@@ -218,7 +218,7 @@ export default function MultiGallery() {
             <ModalWithImage
               imageLink={imageLink}
               imageList={data}
-              imageIndex={index}
+              imageIndex={index + 3}
             />
             <p>{index} fff</p>
           </div>
