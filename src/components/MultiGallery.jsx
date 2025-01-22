@@ -12,7 +12,7 @@ import {
 } from "@material-tailwind/react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
-export function ModalWithImage({ imageLink, imageList }) {
+export function ModalWithImage({ imageLink, imageList, imageIndex }) {
   // const openRef = useRef(false);
   // const handleOpen = () => openRef.current = !openRef.current;
   const [open, setOpen] = React.useState(false);
@@ -23,7 +23,7 @@ export function ModalWithImage({ imageLink, imageList }) {
   useEffect(() => {
     if (open && setActiveIndexRef.current) {
       // Set the initial slide index when the modal is opened
-      setActiveIndexRef.current(2);
+      setActiveIndexRef.current(imageIndex);
     }
   }, [open]);
 
@@ -188,7 +188,11 @@ export default function MultiGallery() {
         ({ imageLink }, index) =>
           (index === 0 && (
             <div key={index} className="col-span-3">
-              <ModalWithImage imageLink={imageLink} imageList={data} />
+              <ModalWithImage
+                imageLink={imageLink}
+                imageList={data}
+                imageIndex={index}
+              />
               <p>{index}</p>
             </div>
           )) ||
@@ -198,7 +202,11 @@ export default function MultiGallery() {
               className="grid grid-rows-subgrid col-span-2 gap-6 w-full"
             >
               <div className={"col-span-1"}>
-                <ModalWithImage imageLink={imageLink} imageList={data} />
+                <ModalWithImage
+                  imageLink={imageLink}
+                  imageList={data}
+                  imageIndex={index}
+                />
                 <p>{index}</p>
               </div>
             </div>
@@ -207,7 +215,11 @@ export default function MultiGallery() {
       {data.slice(3).map(({ imageLink }, index) => (
         <div key={index} className="grid grid-rows-1 gap-6 w-full">
           <div className={"col-span-1"}>
-            <ModalWithImage imageLink={imageLink} imageList={data} />
+            <ModalWithImage
+              imageLink={imageLink}
+              imageList={data}
+              imageIndex={index}
+            />
             <p>{index} fff</p>
           </div>
         </div>
