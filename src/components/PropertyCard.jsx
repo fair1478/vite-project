@@ -19,14 +19,16 @@ export function PropertyCard({
   pricePerRiai = "",
   finalPrice = "",
   tags = [],
+  onClick,
 }) {
   return (
-    <Card shadow={false} className={"w-full grid grid-cols-3"}>
-      <CardHeader
-        shadow={false}
-        floated={false}
-        className="rounded-b-none col-span-1"
-      >
+    <Card
+      shadow={false}
+      className={
+        " hover:shadow-0 lg:bg-bg w-full grid grid-flow-row lg:grid-flow-col grid-rows-2 lg:grid-rows-1 grid-cols-1 lg:grid-cols-3"
+      }
+    >
+      <CardHeader shadow={false} floated={false} className="col-span-1 mb-4">
         <Carousel
           className="h-full"
           loop={true}
@@ -86,12 +88,12 @@ export function PropertyCard({
           ))}
         </Carousel>
       </CardHeader>
-      <div className="col-span-2 flex flex-col">
+      <div className="lg:col-span-2 flex flex-col hover:cursor-pointer active:cursor-progress" onClick={onClick} >
         <CardBody className="flex-grow flex flex-col justify-start">
-          <Typography className="!text-h3 text-[#131D10] mb-2">
+          <Typography className="!text-h4 lg:!text-h3 text-[#131D10] mb-2">
             {title}
           </Typography>
-          <div className="flex gap-1 items-center">
+          <div className="flex gap-1 items-center mb-4">
             <svg
               width="13"
               height="16"
@@ -104,33 +106,33 @@ export function PropertyCard({
                 fill="#5F6368"
               />
             </svg>
-            <Typography className="!text-body1 text-[#294023]">
+            <Typography className="!text-body3 lg:!text-body1 text-[#294023]">
               {location}
             </Typography>
           </div>
-          <div className="flex gap-1 items-center">
+          <div className="!text-body3 lg:!text-body1 flex gap-1 items-center">
             {date}
           </div>
-          <Typography className="!text-body1 text-[#60675E]">
+          <Typography className="!text-body3 lg:!text-body1 !line-clamp-3 text-[#60675E]">
             {bodyText}
           </Typography>
           <div className="flex flex-wrap gap-2 mt-2">
             {tags.map((tag, index) => (
               <span
                 key={index}
-                className="bg-gray-200 text-gray-700 text-xs font-medium px-2.5 py-0.5 rounded"
+                className="bg-gray-200 !text-body3 lg:!text-body1 px-2.5 py-0.5 rounded"
               >
                 {tag}
               </span>
             ))}
           </div>
         </CardBody>
-        <CardFooter className="flex justify-between items-end">
+        <CardFooter className="flex justify-between lg:items-end flex-col lg:flex-row">
           <div className="flex flex-col h-full gap-1 items-start">
-            <Typography className="!text-body1 text-[#162113]">
+            <Typography className="!text-body3 lg:!text-body1 text-[#162113]">
               {pricePerUnit} บาท/ตารางวา
             </Typography>
-            <Typography className="!text-body1 text-[#162113]">
+            <Typography className="!text-body3 lg:!text-body1 text-[#162113]">
               {pricePerRiai} บาท/ไร่
             </Typography>
           </div>

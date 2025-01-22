@@ -4,40 +4,28 @@ export default withMT({
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
-      sans: [
-        "ui-sans-serif",
-        "-apple-system",
-        "BlinkMacSystemFont",
-        "Segoe UI Variable Display",
-        "Segoe UI",
-        "Helvetica",
-        "Apple Color Emoji",
-        "Arial",
-        "sans-serif",
-        "Segoe UI Emoji",
-        "Segoe UI Symbol",
-      ],
+      sans: ["IBM Plex Sans Thai Looped"],
     },
     fontSize: {
       title: [
-        "36px", // 36px
+        "32px", // 32px
         {
           fontWeight: "600", // Semibold
-          lineHeight: "44px", // 48px
+          lineHeight: "44px", // 44px
         },
       ],
       h1: [
-        "24px", // 24px
-        {
-          fontWeight: "600", // Semibold
-          lineHeight: "32px", // 32px
-        },
-      ],
-      h2: [
         "20px", // 20px
         {
           fontWeight: "600", // Semibold
           lineHeight: "28px", // 28px
+        },
+      ],
+      h2: [
+        "18px", // 18px
+        {
+          fontWeight: "600", // Semibold
+          lineHeight: "26px", // 26px
         },
       ],
       h3: [
@@ -51,14 +39,14 @@ export default withMT({
         "14px", // 14px
         {
           fontWeight: "600", // Semibold
-          lineHeight: "22px", // 20px
+          lineHeight: "22px", // 22px
         },
       ],
       paragraph: [
-        "20px", // 20px
+        "18px", // 18px
         {
           fontWeight: "400", // Regular
-          lineHeight: "28px", // 28px
+          lineHeight: "26px", // 26px
         },
       ],
       body1: [
@@ -76,10 +64,10 @@ export default withMT({
         },
       ],
       button1: [
-        "18px", // 18px
+        "16px", // 16px
         {
           fontWeight: "500", // Medium
-          lineHeight: "26px", // 24px
+          lineHeight: "24px", // 24px
         },
       ],
       button2: [
@@ -113,6 +101,8 @@ export default withMT({
       },
       boxShadow: {
         1: "0px 6px 14px rgba(137, 39, 9, 0.25)",
+        0: "0px 2px 8px rgba(160, 123, 101, 0.15)",
+        search: "0px 3px 12px rgba(83, 34, 7, 0.15)",
       },
     },
   },

@@ -1,5 +1,7 @@
 import { GalleryCardPagination } from "../components/GalleryCardPagination";
 import { Button, Typography } from "@material-tailwind/react";
+import SeeFull from "../components/SeeFull";
+import SubDistrict from "../components/SubDistrict";
 function HomePage() {
   const sampleCards = [
     {
@@ -113,20 +115,22 @@ function HomePage() {
   ];
 
   return (
-    <div className="min-h-screen mx-[120px]">
+    <div className="min-h-screen">
       <div className="flex flex-col gap-y-16 pb-64">
+        <div className="flex flex-col gap-4 justify-center items-center">
+          <Typography
+            variant="paragraph"
+            className="!text-paragraph text-[#131D10] mb-8"
+          >
+            เรามีที่ดินให้คุณเลือกหลากหลายที่ในจังหวัดนครนายก
+          </Typography>
+          <SubDistrict />
+          <SeeFull />
+        </div>
         <div>
           <div className="flex justify-between pb-6">
             <h1 className="text-h1">ที่ดินยอดนิยม</h1>
-            <a as="a" href="/properties">
-              <Button
-                variant="filled"
-                color="white"
-                className="px-6 py-1 !text-button2 rounded-full shadow-none"
-              >
-                ดูทั้งหมด
-              </Button>
-            </a>
+            <SeeFull />
           </div>
           <div className="flex flex-col gap-4 w-full">
             <GalleryCardPagination cards={sampleCards} cardsPerPage={3} />
@@ -135,15 +139,7 @@ function HomePage() {
         <div>
           <div className="flex justify-between pb-6">
             <h1 className="text-h1">ที่ดินใหม่ล่าสุด</h1>
-            <a as="a" href="/properties">
-              <Button
-                variant="filled"
-                color="white"
-                className="px-6 py-1 !text-button2 rounded-full shadow-none"
-              >
-                ดูทั้งหมด
-              </Button>
-            </a>
+            <SeeFull />
           </div>
           <div className=" gap-4 w-full">
             <GalleryCardPagination cards={sampleCards} cardsPerPage={3} />
@@ -152,15 +148,7 @@ function HomePage() {
         <div>
           <div className="flex justify-between pb-6">
             <h1 className="text-h1">ที่ดินลดราคาแรง</h1>
-            <a as="a" href="/properties">
-              <Button
-                variant="filled"
-                color="white"
-                className="px-6 py-1 !text-button2 rounded-full shadow-none"
-              >
-                ดูทั้งหมด
-              </Button>
-            </a>
+            <SeeFull />
           </div>
           <div className=" gap-4 w-full">
             <GalleryCardPagination cards={sampleCards} cardsPerPage={3} />
