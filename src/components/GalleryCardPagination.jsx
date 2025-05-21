@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Typography, IconButton } from "@material-tailwind/react";
 import { GalleryCard } from "./GalleryCard";
+import { useNavigate } from "react-router-dom";
+import api from "../utils/api";
 
 import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/outline";
 export function GalleryCardPagination({ cards = [], cardsPerPage = 3 }) {
   const [currentPage, setCurrentPage] = useState(0);
-
+  const navigate = useNavigate();
   // Calculate total pages
   const totalPages = Math.ceil(cards.length / cardsPerPage);
 
@@ -25,38 +27,58 @@ export function GalleryCardPagination({ cards = [], cardsPerPage = 3 }) {
       prev < totalPages - 1 ? prev + 1 : totalPages - 1
     );
   };
+  const handlePropertyClick = (id) => {
+    try {
+      api.post(`/incrementPopularity`, { id: id }).then((response) => {
+        if (response.status === 200) {
+          navigate(`/properties/${id}`);
+        } else {
+          console.error(
+            "Error incrementing popularity: ",
+            response.status,
+            response.statusText
+          );
+        }
+      });
+    } catch (error) {
+      console.error("Error incrementing popularity: ", error);
+    }
+    window.scrollTo(0, 0);
+  };
 
   return (
-    <div className="flex gap-x-4 w-full">
-      <div className="self-center justify-center items-center space-x-4">
-        <IconButton variant="text" onClick={handlePrevious}>
-          <ChevronLeftIcon className="h-6 w-6  text-[#5F6368]" />
-        </IconButton>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+    <div className="flex gap-x-2 w-full">
+      {window.innerWidth > 720 && (
+        <div className="self-center justify-center items-center space-x-4">
+          <IconButton variant="text" onClick={handlePrevious}>
+            <ChevronLeftIcon className="h-6 w-6  text-[#5F6368]" />
+          </IconButton>
+        </div>
+      )}
+      <div className="flex overflow-x-auto md:grid md:grid-cols-2 xl:grid-cols-3 gap-4 mb-4 w-full">
         {getCurrentPageCards().map((card, index) => (
           <GalleryCard
             key={index}
-            images={card.images}
+            imageUrlList={card.imageUrlList}
             title={card.title}
-            bodyText={card.bodyText}
+            subtitle={card.subtitle}
             location={card.location}
             price={card.price}
-            pricePerUnit={card.pricePerUnit}
-            pricePerRiai={card.pricePerRiai}
+            pricePerSquareWha={card.pricePerSquareWha}
+            pricePerRai={card.pricePerRai}
             finalPrice={card.finalPrice}
-            className="w-full"
+            onClick={() => handlePropertyClick(card.id)}
           />
         ))}
       </div>
-
       {/* Navigation */}
-      <div className="self-center justify-center items-center space-x-4">
-        <IconButton variant="text" onClick={handleNext}>
-          <ChevronRightIcon className="h-6 w-6  text-[#5F6368]" />
-        </IconButton>
-      </div>
+      {window.innerWidth > 720 && (
+        <div className="self-center justify-center items-center space-x-4">
+          <IconButton variant="text" onClick={handleNext}>
+            <ChevronRightIcon className="h-6 w-6  text-[#5F6368]" />
+          </IconButton>
+        </div>
+      )}
     </div>
   );
 }

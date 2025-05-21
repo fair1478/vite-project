@@ -24,6 +24,15 @@ function App() {
               active: "active:opacity-[0.85]",
             },
           },
+          outlined: {
+            orange: {
+              border: "border-2 border-primary",
+              color: "text-primary",
+              hover: "hover:opacity-75",
+              focus: "focus:bg-primary/30",
+              active: "active:opacity-[0.85]",
+            },
+          },
         },
       },
     },

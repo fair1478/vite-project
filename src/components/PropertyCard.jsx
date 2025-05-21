@@ -7,31 +7,61 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import Tag from "./Tag";
 
 export function PropertyCard({
+  id,
   imageUrlList = [],
   title = "",
-  bodyText = "",
+  subtitle = "",
   location = "",
-  date = Timestamp.now(),
-  price = "",
-  pricePerUnit = "",
-  pricePerRiai = "",
-  finalPrice = "",
+  price = 0,
+  pricePerSquareWah = 0,
+  pricePerRai = 0,
+  finalPrice = 0,
   tags = [],
   onClick,
 }) {
+  const isVideo = (url) => {
+    return !/\.(png|jpeg|jpg|jfif|pjpeg|pjp|gif)$/i.test(url);
+  };
+  const formatPrice = (price) => {
+    if (price === 0) return "-";
+    return price.toLocaleString("en-US");
+  };
+
   return (
     <Card
       shadow={false}
       className={
-        " hover:shadow-0 lg:bg-bg w-full grid grid-flow-row lg:grid-flow-col grid-rows-2 lg:grid-rows-1 grid-cols-1 lg:grid-cols-3"
+        "hover:shadow-0 w-full flex lg:grid grid-flow-row lg:grid-flow-col grid-rows-2 lg:grid-rows-1 grid-cols-1 lg:grid-cols-3 h-fit"
       }
     >
-      <CardHeader shadow={false} floated={false} className="col-span-1 mb-4">
+      <CardHeader
+        shadow={false}
+        floated={false}
+        className="col-span-1 mb-4 h-56 md:h-72 lg:h-80"
+      >
         <Carousel
-          className="h-full"
+          key={id}
           loop={true}
+          navigation={({ setActiveIndex, activeIndex, length }) => {
+            return (
+              <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2 bg-[#F3F3F3]/40 p-1 rounded-full">
+                {new Array(length).fill("").map((_, i) => (
+                  <span
+                    key={i}
+                    className={`block h-2 w-2 cursor-pointer rounded-full transition-colors content-[''] ${
+                      activeIndex === i
+                        ? "bg-bg"
+                        : "border-bg border-[1px] bg-none"
+                    }`}
+                    onClick={() => setActiveIndex(i)}
+                  />
+                ))}
+              </div>
+            );
+          }}
           prevArrow={({ handlePrev }) => (
             <ChevronLeftIcon
               variant="text"
@@ -78,22 +108,79 @@ export function PropertyCard({
             </ChevronRightIcon>
           )}
         >
-          {imageUrlList.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`image ${index + 1}`}
-              className="h-full w-full object-cover object-center"
-            />
-          ))}
+          {imageUrlList.length > 0 ? (
+            imageUrlList.slice(0, 6).map((image, index) =>
+              isVideo(image) ? (
+                <video
+                  className="h-full w-full object-cover object-center"
+                  src={image}
+                  muted
+                  loading="lazy"
+                  onContextMenu={(e) => e.preventDefault()}
+                  onTouchStart={(e) => e.stopPropagation()}
+                  onTouchMove={(e) => e.stopPropagation()}
+                  onTouchEnd={(e) => e.stopPropagation()}
+                  onClick={(e) => e.stopPropagation()}
+                  autoPlay={false}
+                  disablePictureInPicture
+                  playsInline
+                  poster=""
+                  preload="metadata"
+                  onLoadedMetadata={(e) => {
+                    const video = e.target;
+                    video.currentTime = 0.5;
+                    video.onseeked = () => {
+                      const canvas = document.createElement("canvas");
+                      canvas.width = video.videoWidth;
+                      canvas.height = video.videoHeight;
+                      const ctx = canvas.getContext("2d");
+                      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                      video.setAttribute("poster", canvas.toDataURL());
+                    };
+                  }}
+                />
+              ) : (
+                <img
+                  key={index}
+                  src={image}
+                  alt={`image ${index + 1}`}
+                  className="h-full w-full object-cover object-center"
+                  loading="lazy"
+                />
+              )
+            )
+          ) : (
+            <div className="flex h-full w-full flex-wrap items-center gap-8">
+              <div className="flex flex-col h-full w-full items-center justify-center rounded-lg bg-gray-300">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="h-12 w-12 text-gray-500"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
+                  />
+                </svg>
+                <p>No image</p>
+              </div>
+            </div>
+          )}
         </Carousel>
       </CardHeader>
-      <div className="lg:col-span-2 flex flex-col hover:cursor-pointer active:cursor-progress" onClick={onClick} >
-        <CardBody className="flex-grow flex flex-col justify-start">
-          <Typography className="!text-h4 lg:!text-h3 text-[#131D10] mb-2">
+      <div
+        className="lg:col-span-2 flex flex-col hover:cursor-pointer active:cursor-progress "
+        onClick={onClick}
+      >
+        <CardBody className="flex-grow flex flex-col justify-start py-2 lg:p-6">
+          <Typography className="!text-h3 text-[#131D10] lg:mb-2">
             {title}
           </Typography>
-          <div className="flex gap-1 items-center mb-4">
+          <div className="flex gap-1 items-center mb-2 lg:mb-4">
             <svg
               width="13"
               height="16"
@@ -106,42 +193,45 @@ export function PropertyCard({
                 fill="#5F6368"
               />
             </svg>
-            <Typography className="!text-body3 lg:!text-body1 text-[#294023]">
+            <Typography className="!text-sm lg:!text-body1 text-[#294023]">
               {location}
             </Typography>
           </div>
-          <div className="!text-body3 lg:!text-body1 flex gap-1 items-center">
-            {date}
-          </div>
-          <Typography className="!text-body3 lg:!text-body1 !line-clamp-3 text-[#60675E]">
-            {bodyText}
+          <Typography className="w-full !text-sm lg:!text-body1 !line-clamp-5 h-full max-h-[110px] break-words text-[#60675E]">
+            {subtitle}
           </Typography>
           <div className="flex flex-wrap gap-2 mt-2">
             {tags.map((tag, index) => (
-              <span
+              <Tag
                 key={index}
-                className="bg-gray-200 !text-body3 lg:!text-body1 px-2.5 py-0.5 rounded"
-              >
-                {tag}
-              </span>
+                title={tag}
+                className="!text-sm lg:!text-body1"
+              />
             ))}
           </div>
         </CardBody>
-        <CardFooter className="flex justify-between lg:items-end flex-col lg:flex-row">
+        <CardFooter className="flex justify-between lg:items-end flex-col lg:flex-row !py-2">
           <div className="flex flex-col h-full gap-1 items-start">
-            <Typography className="!text-body3 lg:!text-body1 text-[#162113]">
-              {pricePerUnit} บาท/ตารางวา
+            <Typography className="lg:!text-body1 text-[#162113]">
+              {pricePerSquareWah == 0 ? "-" : formatPrice(pricePerSquareWah)}{" "}
+              บาท/ตารางวา
             </Typography>
-            <Typography className="!text-body3 lg:!text-body1 text-[#162113]">
-              {pricePerRiai} บาท/ไร่
+            <Typography className="!text-sm lg:!text-body1 text-[#162113]">
+              {pricePerRai == 0 ? "-" : formatPrice(pricePerRai)} บาท/ไร่
             </Typography>
           </div>
           <div className="flex flex-col items-end">
-            <Typography className="!text-h3 text-[#D8C9C4] line-through">
-              ยกแปลง {price} บาท
-            </Typography>
-            <Typography className="!text-h2 text-primaryDark">
-              ยกแปลง {finalPrice} บาท
+            {price != 0 && (
+              <Typography className="!text-h3 text-[#D8C9C4] line-through">
+                ยกแปลง {formatPrice(price)} บาท
+              </Typography>
+            )}
+            <Typography
+              className={`!text-h2 flex items-center ${
+                price != 0 ? "text-primaryDark" : "h-[50px]"
+              }`}
+            >
+              ยกแปลง {formatPrice(finalPrice)} บาท
             </Typography>
           </div>
         </CardFooter>

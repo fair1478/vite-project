@@ -17,8 +17,7 @@ function MenuDropdown(props) {
   const renderItems = props.item.map(({ icon, title, description }, key) => (
     <a href="#" key={key}>
       <MenuItem className="flex items-center gap-3 rounded-lg">
-        <div className="flex items-center justify-center rounded-lg !bg-blue-gray-50 p-2 ">
-          {" "}
+        <div className="flex items-center justify-center rounded-lg !bg-blue-gray-50 p-2">
           {React.createElement(icon, {
             strokeWidth: 2,
             className: "h-6 text-gray-900 w-6",
@@ -45,7 +44,7 @@ function MenuDropdown(props) {
 
   return (
     <React.Fragment>
-      <div className="flex space-x-4">
+      <div className="flex">
         <Menu
           open={isMenuOpen}
           handler={setIsMenuOpen}
@@ -53,7 +52,11 @@ function MenuDropdown(props) {
           placement="bottom"
         >
           <MenuHandler>
-            <Typography as="div" variant="small" className="font-medium">
+            <Typography
+              as="div"
+              variant="small"
+              className="font-normal lg:font-medium"
+            >
               <ListItem
                 className="flex items-center gap-2 py-2 pr-4 font-medium text-gray-900"
                 selected={isMenuOpen || isMobileMenuOpen}
@@ -75,14 +78,14 @@ function MenuDropdown(props) {
               </ListItem>
             </Typography>
           </MenuHandler>
-          <MenuList className="hidden max-w-screen-xl rounded-xl lg:block">
-            <ul className="grid grid-cols-3 gap-y-2 outline-none outline-0">
+          <MenuList className="hidden max-w-screen-xl rounded-xl lg:flex">
+            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-2 outline-none outline-0">
               {renderItems}
             </ul>
           </MenuList>
         </Menu>
       </div>
-      <div className="block lg:hidden">
+      <div className="flex lg:hidden">
         <Collapse open={isMobileMenuOpen}>{renderItems}</Collapse>
       </div>
     </React.Fragment>
