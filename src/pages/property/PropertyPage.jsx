@@ -223,7 +223,6 @@ function PropertyPage() {
                         className="!px-0 py-0 !text-button2 rounded-full shadow-none hover:bg-gray-200"
                       >
                         <XCircleIcon className="h-6 w-6 text-[#5F6368]" />
-                        // Render combined price chip
                       </Button>
                     }
                     className="flex space-x-2 bg-secondary !px-2 !py-1 md:!px-4 md:!py-3 text-body2 md:text-body1 rounded-full shadow-none text-primary !normal-case"
