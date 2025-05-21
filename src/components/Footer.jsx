@@ -6,16 +6,17 @@ import logo_phone from "../assets/el_phone-alt.svg";
 
 const LINKS = [
   {
-    title: "Product",
-    items: ["Overview", "Features", "Solutions", "Tutorials"],
+    items: ["ยอดนิยม", "ใหม่ล่าสุด", "ลดราคาแรง"],
   },
   {
-    title: "Company",
-    items: ["About us", "Careers", "Press", "News"],
-  },
-  {
-    title: "Resource",
-    items: ["Blog", "Newsletter", "Events", "Help center"],
+    items: [
+      "ต.เขาพระ อ.เมือง",
+      "ต.สาริกา อ.เมือง",
+      "ต.ดอนยอ อ.เมือง",
+      "ต.พรหมมณี อ.เมือง",
+      "ต.เขาเพิ่ม อ.บ้านนา",
+      "ต.เกาะหวาย อ.ปากพลี",
+    ],
   },
 ];
 
@@ -62,15 +63,8 @@ export function Footer() {
               </a>
             </div>
             <div className="grid grid-cols-3 justify-between gap-16">
-              {LINKS.map(({ title, items }) => (
-                <ul key={title}>
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="mb-3 font-medium opacity-40"
-                  >
-                    {title}
-                  </Typography>
+              {LINKS.slice(0, 1).map(({ items }, index) => (
+                <ul key={index}>
                   {items.map((link) => (
                     <li key={link}>
                       <Typography
@@ -84,6 +78,38 @@ export function Footer() {
                     </li>
                   ))}
                 </ul>
+              ))}
+              {LINKS.slice(1).map(({ items }, index) => (
+                <>
+                  <ul key={index}>
+                    {items.slice(3).map((link) => (
+                      <li key={link}>
+                        <Typography
+                          as="a"
+                          href="#"
+                          color="gray"
+                          className="py-1.5 font-normal transition-colors hover:text-blue-gray-900"
+                        >
+                          {link}
+                        </Typography>
+                      </li>
+                    ))}
+                  </ul>
+                  <ul key={`${index}-2`}>
+                    {items.slice(3, 6).map((link) => (
+                      <li key={link}>
+                        <Typography
+                          as="a"
+                          href="#"
+                          color="gray"
+                          className="py-1.5 font-normal transition-colors hover:text-blue-gray-900"
+                        >
+                          {link}
+                        </Typography>
+                      </li>
+                    ))}
+                  </ul>
+                </>
               ))}
             </div>
           </div>
@@ -122,13 +148,6 @@ export function Footer() {
           <div className="grid grid-cols-2 justify-between w-full gap-4">
             {LINKS.map(({ title, items }) => (
               <ul key={title}>
-                <Typography
-                  variant="small"
-                  color="blue-gray"
-                  className="mb-3 font-medium opacity-40"
-                >
-                  {title}
-                </Typography>
                 {items.map((link) => (
                   <li key={link}>
                     <Typography
