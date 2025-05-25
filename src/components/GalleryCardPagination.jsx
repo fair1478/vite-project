@@ -16,13 +16,13 @@ import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/outline";
 export function GalleryCardPagination({ cards = [], cardsPerPage = 3 }) {
   const [currentPage, setCurrentPage] = useState(0);
   const navigate = useNavigate();
-  // Calculate total pages
-  const totalPages = Math.ceil(cards.length / cardsPerPage);
+  const safeCards = Array.isArray(cards) ? cards : [];
+  const safeCardsPerPage = Number(cardsPerPage) > 0 ? Number(cardsPerPage) : 3;
+  const totalPages = Math.ceil(safeCards.length / safeCardsPerPage);
 
-  // Get cards for current page
   const getCurrentPageCards = () => {
-    const startIndex = currentPage * cardsPerPage;
-    return cards.slice(startIndex, startIndex + cardsPerPage);
+    const startIndex = currentPage * safeCardsPerPage;
+    return safeCards.slice(startIndex, startIndex + safeCardsPerPage);
   };
 
   // Handle navigation
@@ -76,6 +76,7 @@ export function GalleryCardPagination({ cards = [], cardsPerPage = 3 }) {
       <div className="flex overflow-x-auto md:grid md:grid-cols-2 xl:grid-cols-3 gap-4 mb-4 w-full">
         {getCurrentPageCards().map((card, index) => (
           <GalleryCard
+            id={`${card.id}-${index}`}
             key={index}
             imageUrlList={card.imageUrlList}
             title={card.title}

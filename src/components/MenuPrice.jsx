@@ -44,7 +44,8 @@ function PriceRangeFilter() {
   }
 
   const validateRange = (newMin, newMax) => {
-    if (newMin !== 0 && newMax !== 0) {
+    if (newMin !== 0 && newMax !== 0 && newMax !== "" && newMin !== "") {
+      console.log("newMin", newMin, "newMax", newMax);
       setError(Number(newMin) > Number(newMax));
       updateValid(Number(newMin) > Number(newMax) ? false : true);
     } else {
@@ -285,15 +286,21 @@ function PriceRangeFilter() {
                     textBeforeCursor.match(/,/g) || []
                   ).length; // Count commas before cursor
 
-                  const numericValue = rawValue === "" ? 0 : Number(rawValue);
                   // Prevent leading zeros
-                  if (rawValue.startsWith("0") && rawValue.length > 1) {
+                  if (rawValue.startsWith("0")) {
                     rawValue = rawValue.replace(/^0+/, ""); // Remove leading zeros
-                    handlePriceChange("minPrice", rawValue);
+                    handlePriceChange(
+                      "minPrice",
+                      rawValue === "" ? 0 : Number(rawValue)
+                    );
                     window.requestAnimationFrame(() => {
                       input.setSelectionRange(0, 0);
                     });
-                  } else if (!isNaN(numericValue)) {
+                  }
+
+                  const numericValue = rawValue === "" ? 0 : Number(rawValue);
+
+                  if (!isNaN(numericValue)) {
                     handlePriceChange("minPrice", numericValue);
 
                     // Format the value with commas

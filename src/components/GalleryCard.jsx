@@ -26,10 +26,15 @@ export function GalleryCard({
     return !/\.(png|jpeg|jpg|jfif|pjpeg|pjp|gif)$/i.test(url);
   };
 
+  function formatNumberWithCommas(value) {
+    if (value === null || value === "" || value === 0) return "";
+    return Number(value).toLocaleString("en-US");
+  }
+
   return (
     <Card
       shadow={false}
-      className="hover:shadow-0 flex h-full shadow-card flex-shrink-0 w-[300px] md:w-full"
+      className="hover:shadow-0 flex h-full shadow-card flex-shrink-0 w-[350px] md:w-full"
     >
       <CardHeader
         shadow={false}
@@ -209,16 +214,22 @@ export function GalleryCard({
         <CardFooter className="flex justify-between 2xl:items-end flex-col 2xl:flex-row mt-auto !py-2">
           <div className="flex flex-col h-full gap-1 items-start">
             <Typography className="!text-sm lg:!text-body1 text-[#162113]">
-              {pricePerSquareWha == 0 ? "-" : pricePerSquareWha} บาท/ตารางวา
+              {formatNumberWithCommas(pricePerSquareWha) == 0
+                ? "-"
+                : formatNumberWithCommas(pricePerSquareWha)}{" "}
+              บาท/ตารางวา
             </Typography>
             <Typography className="!text-sm lg:!text-body1 text-[#162113]">
-              {pricePerRai == 0 ? "-" : pricePerRai} บาท/ไร่
+              {formatNumberWithCommas(pricePerRai) == 0
+                ? "-"
+                : formatNumberWithCommas(pricePerRai)}{" "}
+              บาท/ไร่
             </Typography>
           </div>
           <div className="flex flex-col items-center lg:items-end pt-6 lg:pt-0">
             {price != 0 && (
               <Typography className="!text-h3 text-[#D8C9C4] line-through">
-                ยกแปลง {price} บาท
+                ยกแปลง {formatNumberWithCommas(price)} บาท
               </Typography>
             )}
             <Typography
@@ -226,7 +237,7 @@ export function GalleryCard({
                 price != 0 ? "text-primaryDark" : "h-[50px]"
               }`}
             >
-              ยกแปลง {finalPrice} บาท
+              ยกแปลง {formatNumberWithCommas(finalPrice)} บาท
             </Typography>
           </div>
         </CardFooter>

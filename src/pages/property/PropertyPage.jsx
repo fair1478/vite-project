@@ -309,7 +309,7 @@ function PropertyPage() {
               value={
                 <Typography className="!text-body2 md:!text-body1 pl-2 pr-2">
                   {currentFilters.minPrice > 0 && currentFilters.maxPrice > 0
-                    ? `${currentFilters.minPrice} - ${currentFilters.maxPrice}{" "}
+                    ? `${currentFilters.minPrice} - ${currentFilters.maxPrice}
                   บาท`
                     : currentFilters.minPrice > 0
                     ? `มากกว่า ${currentFilters.minPrice} บาท`
@@ -383,7 +383,7 @@ function PropertyPage() {
                 if ((minRai || minWah) && (maxRai || maxWah)) {
                   return (
                     <Typography className="!text-body2 md:!text-body1 pl-2 pr-2">
-                      {formatArea(minRai, minWah)} -{formatArea(maxRai, maxWah)}
+                      {formatArea(minRai, minWah)} - {formatArea(maxRai, maxWah)}
                     </Typography>
                   );
                 }
