@@ -4,7 +4,7 @@ export default withMT({
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
-      sans: ["IBM Plex Sans Thai Looped"],
+      sans: ["Arial", "Helvetica", "sans-serif"],
     },
     screens: {
       lg: "990px",

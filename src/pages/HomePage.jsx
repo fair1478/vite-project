@@ -5,117 +5,6 @@ import SubDistrict from "../components/SubDistrict";
 import { useEffect, useState } from "react";
 import api from "../utils/api";
 function HomePage() {
-  const sampleCards = [
-    {
-      images: [
-        "https://s3-alpha-sig.figma.com/img/46b7/1fc0/c63b506d65d00af659b04b8a2a152697?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=bGWQO~8mRUT38AsA3S1kHlqtneBz0czKPuQRZ76BatBP6JmQRGhFTYb0VXTYZL4VLblRDFIk1qyXTwFfh6msukO8vU~0M0ISwNfgfjLrVZZttcj1HLqN1rKXopgeWNwutGLxPjm5wYd~m-8uMnse6qI7Zml~-FzoakKG7zAsdIKQ6fmhUOWrstm3ORA47hlhHSLF329SDs-9TYedbrWThHNZ4dQMFsrIN6u48Zfu5OMzQdil~MYHxC4h1wAFpSqqKmz0pEYfX4y52XshX7XyvdZnCJHR~2HbxHbgw~GiUYKAjjAdzZzYQzFQzic~w~siePrxgiN2MoC~BEf~X8Tt7A__",
-        "https://images.unsplash.com/photo-1432462770865-65b70566d673?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-      ],
-      title: "ที่ดินติดแม่น้ำนครนายก 45 เมตร รวม 2 โฉนด",
-      bodyText:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, consequat nibh.",
-      location: "นครนายก",
-      price: "1,800,000",
-      pricePerUnit: "2,225",
-      pricePerRiai: "890,000",
-      finalPrice: "1,780,000",
-    },
-    {
-      images: [
-        "https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80",
-        "https://s3-alpha-sig.figma.com/img/46b7/1fc0/c63b506d65d00af659b04b8a2a152697?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=bGWQO~8mRUT38AsA3S1kHlqtneBz0czKPuQRZ76BatBP6JmQRGhFTYb0VXTYZL4VLblRDFIk1qyXTwFfh6msukO8vU~0M0ISwNfgfjLrVZZttcj1HLqN1rKXopgeWNwutGLxPjm5wYd~m-8uMnse6qI7Zml~-FzoakKG7zAsdIKQ6fmhUOWrstm3ORA47hlhHSLF329SDs-9TYedbrWThHNZ4dQMFsrIN6u48Zfu5OMzQdil~MYHxC4h1wAFpSqqKmz0pEYfX4y52XshX7XyvdZnCJHR~2HbxHbgw~GiUYKAjjAdzZzYQzFQzic~w~siePrxgiN2MoC~BEf~X8Tt7A__",
-      ],
-      title: "Another Property Listing",
-      bodyText:
-        "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      location: "นครนายก",
-      price: "1,800,000",
-      pricePerUnit: "2,225",
-      pricePerRiai: "890,000",
-      finalPrice: "1,780,000",
-    },
-    // Add more cards as needed
-    {
-      images: [
-        "https://images.unsplash.com/photo-1432462770865-65b70566d673?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-        "https://s3-alpha-sig.figma.com/img/46b7/1fc0/c63b506d65d00af659b04b8a2a152697?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=bGWQO~8mRUT38AsA3S1kHlqtneBz0czKPuQRZ76BatBP6JmQRGhFTYb0VXTYZL4VLblRDFIk1qyXTwFfh6msukO8vU~0M0ISwNfgfjLrVZZttcj1HLqN1rKXopgeWNwutGLxPjm5wYd~m-8uMnse6qI7Zml~-FzoakKG7zAsdIKQ6fmhUOWrstm3ORA47hlhHSLF329SDs-9TYedbrWThHNZ4dQMFsrIN6u48Zfu5OMzQdil~MYHxC4h1wAFpSqqKmz0pEYfX4y52XshX7XyvdZnCJHR~2HbxHbgw~GiUYKAjjAdzZzYQzFQzic~w~siePrxgiN2MoC~BEf~X8Tt7A__",
-      ],
-      title: "Third Property Listing",
-      bodyText:
-        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
-      location: "นครนายก",
-      price: "1,800,000",
-      pricePerUnit: "2,225",
-      pricePerRiai: "890,000",
-      finalPrice: "1,780,000",
-    },
-    {
-      images: [
-        "https://s3-alpha-sig.figma.com/img/46b7/1fc0/c63b506d65d00af659b04b8a2a152697?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=bGWQO~8mRUT38AsA3S1kHlqtneBz0czKPuQRZ76BatBP6JmQRGhFTYb0VXTYZL4VLblRDFIk1qyXTwFfh6msukO8vU~0M0ISwNfgfjLrVZZttcj1HLqN1rKXopgeWNwutGLxPjm5wYd~m-8uMnse6qI7Zml~-FzoakKG7zAsdIKQ6fmhUOWrstm3ORA47hlhHSLF329SDs-9TYedbrWThHNZ4dQMFsrIN6u48Zfu5OMzQdil~MYHxC4h1wAFpSqqKmz0pEYfX4y52XshX7XyvdZnCJHR~2HbxHbgw~GiUYKAjjAdzZzYQzFQzic~w~siePrxgiN2MoC~BEf~X8Tt7A__",
-      ],
-      title: "Another Property Listing",
-      bodyText:
-        "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      location: "นครนายก",
-      price: "1,800,000",
-      pricePerUnit: "2,225",
-      pricePerRiai: "890,000",
-      finalPrice: "1,780,000",
-    },
-    {
-      images: [
-        "https://s3-alpha-sig.figma.com/img/46b7/1fc0/c63b506d65d00af659b04b8a2a152697?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=bGWQO~8mRUT38AsA3S1kHlqtneBz0czKPuQRZ76BatBP6JmQRGhFTYb0VXTYZL4VLblRDFIk1qyXTwFfh6msukO8vU~0M0ISwNfgfjLrVZZttcj1HLqN1rKXopgeWNwutGLxPjm5wYd~m-8uMnse6qI7Zml~-FzoakKG7zAsdIKQ6fmhUOWrstm3ORA47hlhHSLF329SDs-9TYedbrWThHNZ4dQMFsrIN6u48Zfu5OMzQdil~MYHxC4h1wAFpSqqKmz0pEYfX4y52XshX7XyvdZnCJHR~2HbxHbgw~GiUYKAjjAdzZzYQzFQzic~w~siePrxgiN2MoC~BEf~X8Tt7A__",
-      ],
-      title: "Another Property Listing",
-      bodyText:
-        "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      location: "นครนายก",
-      price: "1,800,000",
-      pricePerUnit: "2,225",
-      pricePerRiai: "890,000",
-      finalPrice: "1,780,000",
-    },
-    {
-      images: [
-        "https://s3-alpha-sig.figma.com/img/46b7/1fc0/c63b506d65d00af659b04b8a2a152697?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=bGWQO~8mRUT38AsA3S1kHlqtneBz0czKPuQRZ76BatBP6JmQRGhFTYb0VXTYZL4VLblRDFIk1qyXTwFfh6msukO8vU~0M0ISwNfgfjLrVZZttcj1HLqN1rKXopgeWNwutGLxPjm5wYd~m-8uMnse6qI7Zml~-FzoakKG7zAsdIKQ6fmhUOWrstm3ORA47hlhHSLF329SDs-9TYedbrWThHNZ4dQMFsrIN6u48Zfu5OMzQdil~MYHxC4h1wAFpSqqKmz0pEYfX4y52XshX7XyvdZnCJHR~2HbxHbgw~GiUYKAjjAdzZzYQzFQzic~w~siePrxgiN2MoC~BEf~X8Tt7A__",
-      ],
-      title: "Another Property Listing",
-      bodyText:
-        "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      location: "นครนายก",
-      price: "1,800,000",
-      pricePerUnit: "2,225",
-      pricePerRiai: "890,000",
-      finalPrice: "1,780,000",
-    },
-    {
-      images: [
-        "https://s3-alpha-sig.figma.com/img/46b7/1fc0/c63b506d65d00af659b04b8a2a152697?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=bGWQO~8mRUT38AsA3S1kHlqtneBz0czKPuQRZ76BatBP6JmQRGhFTYb0VXTYZL4VLblRDFIk1qyXTwFfh6msukO8vU~0M0ISwNfgfjLrVZZttcj1HLqN1rKXopgeWNwutGLxPjm5wYd~m-8uMnse6qI7Zml~-FzoakKG7zAsdIKQ6fmhUOWrstm3ORA47hlhHSLF329SDs-9TYedbrWThHNZ4dQMFsrIN6u48Zfu5OMzQdil~MYHxC4h1wAFpSqqKmz0pEYfX4y52XshX7XyvdZnCJHR~2HbxHbgw~GiUYKAjjAdzZzYQzFQzic~w~siePrxgiN2MoC~BEf~X8Tt7A__",
-      ],
-      title: "Another Property Listing",
-      bodyText:
-        "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      location: "นครนายก",
-      price: "1,800,000",
-      pricePerUnit: "2,225",
-      pricePerRiai: "890,000",
-      finalPrice: "1,780,000",
-    },
-    {
-      images: [
-        "https://s3-alpha-sig.figma.com/img/46b7/1fc0/c63b506d65d00af659b04b8a2a152697?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=bGWQO~8mRUT38AsA3S1kHlqtneBz0czKPuQRZ76BatBP6JmQRGhFTYb0VXTYZL4VLblRDFIk1qyXTwFfh6msukO8vU~0M0ISwNfgfjLrVZZttcj1HLqN1rKXopgeWNwutGLxPjm5wYd~m-8uMnse6qI7Zml~-FzoakKG7zAsdIKQ6fmhUOWrstm3ORA47hlhHSLF329SDs-9TYedbrWThHNZ4dQMFsrIN6u48Zfu5OMzQdil~MYHxC4h1wAFpSqqKmz0pEYfX4y52XshX7XyvdZnCJHR~2HbxHbgw~GiUYKAjjAdzZzYQzFQzic~w~siePrxgiN2MoC~BEf~X8Tt7A__",
-      ],
-      title: "Another Property Listing",
-      bodyText:
-        "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      location: "นครนายก",
-      price: "1,800,000",
-      pricePerUnit: "2,225",
-      pricePerRiai: "890,000",
-      finalPrice: "1,780,000",
-    },
-  ];
-
   const [latestProperties, setLatestProperties] = useState([]);
   const [orderDiscount, setOrderDiscount] = useState([]);
   const [popularity, setPopularity] = useState([]);
@@ -168,7 +57,7 @@ function HomePage() {
         </div>
         <div>
           <div className="flex justify-between pb-6">
-            <Typography className="!text-h2 md:!text-h1">
+            <Typography id="land-0" className="!text-h3 md:!text-h2">
               ที่ดินยอดนิยม
             </Typography>
             <SeeFull />
@@ -188,7 +77,7 @@ function HomePage() {
         </div>
         <div>
           <div className="flex justify-between pb-6">
-            <Typography className="!text-h2 md:!text-h1">
+            <Typography id="land-1" className="!text-h3 md:!text-h2">
               ที่ดินใหม่ล่าสุด
             </Typography>
             <SeeFull />
@@ -208,7 +97,7 @@ function HomePage() {
         </div>
         <div>
           <div className="flex justify-between pb-6">
-            <Typography className="!text-h2 md:!text-h1">
+            <Typography id="land-2" className="!text-h3 md:!text-h2">
               ที่ดินลดราคาแรง
             </Typography>
             <SeeFull />
@@ -245,7 +134,7 @@ function HomePage() {
             </Typography>
             <Typography
               variant="paragraph"
-              className="text-bg text-center !text-body2 md:!text-paragraph"
+              className="text-bg text-center !text-body1 md:!text-paragraph"
             >
               นายหน้าที่ดิน ดูแล บริการงานขายที่ดินนครนายก และจังหวัดใกล้เคียง{" "}
               <br />

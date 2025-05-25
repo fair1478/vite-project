@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import { Button, Spinner, Typography } from "@material-tailwind/react";
+import { Button, Spinner } from "@material-tailwind/react";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import logo from "../assets/Logo.svg";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { AdjustmentsHorizontalIcon } from "@heroicons/react/20/solid";
 import { Collapse } from "@material-tailwind/react";
-import { ArrowRightStartOnRectangleIcon } from "@heroicons/react/24/outline";
 import PriceRangeFilter from "../components/MenuPrice";
 import AreaRangeFilter from "../components/MenuArea";
 import LocationFilter from "../components/MenuLocation";
@@ -154,7 +153,7 @@ export function GalleryLayout() {
   return (
     <div className="bg-bg">
       <div
-        className={`sticky top-0 w-full z-[999] px-2 md:px-[80px] 2xl:px-[160px] pt-2 lg:pt-0 mb-8 bg-bg ${
+        className={`sticky top-0 w-full z-[999] px-2 md:px-[24px] 2xl:px-[160px] pt-2 lg:pt-0 mb-4 md:mb-8 bg-bg ${
           window.innerWidth < 720 && ishomePage
             ? isSticky
               ? "shadow-0"
@@ -308,7 +307,7 @@ export function GalleryLayout() {
         </div>
       )}
       <div
-        className={`mx-2 md:mx-[80px] 2xl:mx-[160px] ${
+        className={`mx-2 md:mx-[24px] 2xl:mx-[160px] ${
           window.innerWidth < 720 && ishomePage
             ? isSticky
               ? ""

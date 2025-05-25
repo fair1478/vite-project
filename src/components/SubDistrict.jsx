@@ -14,6 +14,7 @@ const SubDistrict = () => {
       console.log("filterLocation", filterLocation);
       updateApplyedFilter("locations", [filterLocation]);
       navigate("/properties");
+      window.scrollTo(0, 0);
     };
   };
 
@@ -36,6 +37,7 @@ const SubDistrict = () => {
           color="orange"
           ripple={false}
           className="rounded-[100px] col-span-1 px-8 py-3 w-full bg-[#F9ECE8]"
+          onClick={handleClick("ต.สาริกา อ.เมือง")}
         >
           <Typography className="!text-h4 md:!text-button1 text-primary text-nowrap">
             ต.สาริกา <br /> อ.เมือง
@@ -57,7 +59,7 @@ const SubDistrict = () => {
           color="orange"
           ripple={false}
           className="rounded-[100px] col-span-1 px-8 py-3 w-full bg-[#F9ECE8]"
-          onClick={handleClick("ต.เขาพระ อ.เมือง")}
+          onClick={handleClick("ต.พรหมมณี อ.เมือง")}
         >
           <Typography className="!text-h4 md:!text-button1 text-primary text-nowrap">
             ต.พรหมมณี <br /> อ.เมือง
@@ -68,7 +70,7 @@ const SubDistrict = () => {
           color="orange"
           ripple={false}
           className="rounded-[100px] col-span-1 px-8 py-3 w-full bg-[#F9ECE8]"
-          onClick={handleClick("ต.เขาพระ อ.เมือง")}
+          onClick={handleClick("ต.เขาเพิ่ม อ.เมือง")}
         >
           <Typography className="!text-h4 md:!text-button1 text-primary text-nowrap">
             ต.เขาเพิ่ม <br /> อ.เมือง
@@ -79,7 +81,7 @@ const SubDistrict = () => {
           color="orange"
           ripple={false}
           className="rounded-[100px] col-span-1 px-8 py-3 w-full bg-[#F9ECE8]"
-          onClick={handleClick("ต.เขาพระ อ.เมือง")}
+          onClick={handleClick("ต.เกาะหวาย อ.เมือง")}
         >
           <Typography className="!text-h4 md:!text-button1 text-primary text-nowrap">
             ต.เกาะหวาย <br /> อ.เมือง

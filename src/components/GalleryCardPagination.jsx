@@ -1,5 +1,13 @@
-import React, { useState } from "react";
-import { Typography, IconButton } from "@material-tailwind/react";
+import { useState } from "react";
+import {
+  Typography,
+  IconButton,
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Button,
+} from "@material-tailwind/react";
 import { GalleryCard } from "./GalleryCard";
 import { useNavigate } from "react-router-dom";
 import api from "../utils/api";
@@ -45,6 +53,16 @@ export function GalleryCardPagination({ cards = [], cardsPerPage = 3 }) {
     }
     window.scrollTo(0, 0);
   };
+
+  if (cards.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center w-full h-36 md:h-48 xl:h-64 p-4">
+        <Typography variant="paragraph" className="!text-h3 text-gray-500">
+          ยังไม่มีรายการที่ดิน
+        </Typography>
+      </div>
+    );
+  }
 
   return (
     <div className="flex gap-x-2 w-full">
