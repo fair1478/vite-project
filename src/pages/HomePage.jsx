@@ -4,6 +4,8 @@ import SeeFull from "../components/SeeFull";
 import SubDistrict from "../components/SubDistrict";
 import { useEffect, useState } from "react";
 import api from "../utils/api";
+import maeKai from "../assets/mae-kai.png";
+
 function HomePage() {
   const [latestProperties, setLatestProperties] = useState([]);
   const [orderDiscount, setOrderDiscount] = useState([]);
@@ -119,11 +121,7 @@ function HomePage() {
       <div className="flex flex-col w-full justify-center items-center rounded-[32px] mb-24 md:mb-72 py-8 px-10 lg:py-12 lg:px-8 2xl:px-24 gap-[35px] mt-16 bg-[#F0884C] shadow-1">
         <div className="flex flex-col gap-8">
           <div className="flex justify-center">
-            <img
-              src="src/assets/mae-kai.png"
-              alt="mae-kai"
-              className="size-32 lg:size-64"
-            />
+            <img src={maeKai} alt="mae-kai" className="size-32 lg:size-64" />
           </div>
           <div className="flex flex-col justify-center gap-4">
             <Typography

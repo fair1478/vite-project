@@ -152,19 +152,7 @@ export function ModalWithMedia({ mediaLink, mediaList, mediaIndex, isMore }) {
               useEffect(() => {
                 setCurrentIndex(activeIndex);
               }, [activeIndex]);
-              return (
-                <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2 [@media(min-height:1400px)]:gap-6 bg-[#F3F3F3]/40 p-2 rounded-full">
-                  {new Array(length).fill("").map((_, i) => (
-                    <span
-                      key={i}
-                      className={`block h-3 w-3 [@media(min-height:1400px)]:h-6 [@media(min-height:1400px)]:w-6 cursor-pointer rounded-full transition-colors content-[''] ${
-                        activeIndex === i ? "bg-white" : "bg-white/50"
-                      }`}
-                      onClick={() => setActiveIndex(i)}
-                    />
-                  ))}
-                </div>
-              );
+              return null;
             }}
             prevArrow={({ handlePrev }) => (
               <ChevronLeftIcon

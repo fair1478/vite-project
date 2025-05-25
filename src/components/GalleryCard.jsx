@@ -34,7 +34,7 @@ export function GalleryCard({
   return (
     <Card
       shadow={false}
-      className="hover:shadow-0 flex h-full shadow-card flex-shrink-0 w-[350px] md:w-full"
+      className="hover:shadow-0 flex h-full shadow-card flex-shrink-0 w-[340px] md:w-full"
     >
       <CardHeader
         shadow={false}
