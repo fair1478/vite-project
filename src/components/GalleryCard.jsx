@@ -214,15 +214,13 @@ export function GalleryCard({
         <CardFooter className="flex justify-between 2xl:items-end flex-col 2xl:flex-row mt-auto !py-2">
           <div className="flex flex-col h-full gap-1 items-start">
             <Typography className="!text-sm lg:!text-body1 text-[#162113]">
-              {formatNumberWithCommas(pricePerSquareWha) == 0
+              {pricePerSquareWha == 0
                 ? "-"
                 : formatNumberWithCommas(pricePerSquareWha)}{" "}
               บาท/ตารางวา
             </Typography>
             <Typography className="!text-sm lg:!text-body1 text-[#162113]">
-              {formatNumberWithCommas(pricePerRai) == 0
-                ? "-"
-                : formatNumberWithCommas(pricePerRai)}{" "}
+              {pricePerRai == 0 ? "-" : formatNumberWithCommas(pricePerRai)}{" "}
               บาท/ไร่
             </Typography>
           </div>

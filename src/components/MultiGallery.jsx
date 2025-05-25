@@ -262,14 +262,14 @@ export function ModalWithMedia({ mediaLink, mediaList, mediaIndex, isMore }) {
 
 export default function MultiGallery({ data }) {
   return (
-    <div className="grid grid-cols-5 gap-x-1 gap-y-0.5 w-[90%]">
-      <div className="col-span-3 h-[150px] sm:h-[200px] lg:h-[300px] xl:h-[500px]">
+    <div className="grid grid-cols-5 gap-x-1 gap-y-0.5 w-full md:w-[90%]">
+      <div className="col-span-3 h-[200px] lg:h-[300px] xl:h-[500px]">
         <ModalWithMedia mediaLink={data[0]} mediaList={data} mediaIndex={0} />
       </div>
       <div className="grid col-span-2 grid-rows-2 gap-y-0.5 w-full">
         {data.slice(1, 3).map((mediaLink, index) => (
           <div
-            className="col-span-1 h-[75px] sm:h-[100px] lg:h-[150px] xl:h-[250px]"
+            className="col-span-1 h-[100px] lg:h-[150px] xl:h-[250px]"
             key={index}
           >
             <ModalWithMedia
@@ -283,7 +283,7 @@ export default function MultiGallery({ data }) {
       {data.slice(3, 8).map((mediaLink, index) => (
         <div
           key={index}
-          className="grid col-span-1 w-full relative h-[75px] sm:h-[100px] lg:h-[150px] xl:h-[250px]"
+          className="grid col-span-1 w-full relative h-[100px] lg:h-[150px] xl:h-[250px]"
         >
           <ModalWithMedia
             mediaLink={mediaLink}
