@@ -234,7 +234,7 @@ export function Footer() {
             variant="small"
             className="mb-4 text-center !text-body1 text-textDark md:mb-0"
           >
-            &copy; {currentYear} Pinyaphat Wiangthongjirayot. (c) All Rights
+            &copy; {currentYear} Pinyapat Wiangthongjirayot. (c) All Rights
             Reserved.
           </Typography>
         </div>
