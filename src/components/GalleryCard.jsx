@@ -16,7 +16,7 @@ export function GalleryCard({
   subtitle = "",
   location = "",
   price = 0,
-  pricePerSquareWha = 0,
+  pricePerSquareWah = 0,
   pricePerRai = 0,
   finalPrice = 0,
   tags = [],
@@ -214,9 +214,9 @@ export function GalleryCard({
         <CardFooter className="flex justify-between 2xl:items-end flex-col 2xl:flex-row mt-auto !py-2">
           <div className="flex flex-col h-full gap-1 items-start">
             <Typography className="!text-sm lg:!text-body1 text-[#162113]">
-              {pricePerSquareWha == 0
+              {pricePerSquareWah == 0
                 ? "-"
-                : formatNumberWithCommas(pricePerSquareWha)}{" "}
+                : formatNumberWithCommas(pricePerSquareWah)}{" "}
               บาท/ตารางวา
             </Typography>
             <Typography className="!text-sm lg:!text-body1 text-[#162113]">
