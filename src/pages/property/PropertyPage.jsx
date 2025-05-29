@@ -80,21 +80,22 @@ function PropertyPage() {
   }, [applyedFilters]);
 
   const handlePropertyClick = (id) => {
-    try {
-      api.post(`/incrementPopularity`, { id: id }).then((response) => {
-        if (response.status === 200) {
-          navigate(`/properties/${id}`);
-        } else {
-          console.error(
-            "Error incrementing popularity: ",
-            response.status,
-            response.statusText
-          );
-        }
-      });
-    } catch (error) {
-      console.error("Error incrementing popularity: ", error);
-    }
+    // try {
+    //   api.post(`/incrementPopularity`, { id: id }).then((response) => {
+    //     if (response.status === 200) {
+    //       navigate(`/properties/${id}`);
+    //     } else {
+    //       console.error(
+    //         "Error incrementing popularity: ",
+    //         response.status,
+    //         response.statusText
+    //       );
+    //     }
+    //   });
+    // } catch (error) {
+    //   console.error("Error incrementing popularity: ", error);
+    // }
+    navigate(`/properties/${id}`);
     window.scrollTo(0, 0);
   };
 
@@ -195,7 +196,7 @@ function PropertyPage() {
 
   return (
     <div className="flex min-h-screen justify-center items-start">
-      <div className="flex flex-col gap-4 h-full justify-start items-center w-full lg:pb-0 pb-6">
+      <div className="flex flex-col gap-4 h-full justify-start items-center w-full pb-6 lg:pb-10">
         {/* Active Filters Section */}
         <div className="flex flex-wrap gap-2 w-full">
           {Object.entries(currentFilters).map(([key, value]) => {
@@ -383,7 +384,8 @@ function PropertyPage() {
                 if ((minRai || minWah) && (maxRai || maxWah)) {
                   return (
                     <Typography className="!text-body2 md:!text-body1 pl-2 pr-2">
-                      {formatArea(minRai, minWah)} - {formatArea(maxRai, maxWah)}
+                      {formatArea(minRai, minWah)} -{" "}
+                      {formatArea(maxRai, maxWah)}
                     </Typography>
                   );
                 }
@@ -467,6 +469,8 @@ function PropertyPage() {
               title={property.title}
               subtitle={property.subtitle}
               location={property.location}
+              areaRai={property.areaRai}
+              areaSquareWah={property.areaSquareWah}
               date={property.date}
               price={property.price}
               pricePerSquareWah={property.pricePerSquareWah}

@@ -82,6 +82,8 @@ export function GalleryCardPagination({ cards = [], cardsPerPage = 3 }) {
             title={card.title}
             subtitle={card.subtitle}
             location={card.location}
+            areaRai={card.areaRai}
+            areaSquareWah={card.areaSquareWah}
             price={card.price}
             pricePerSquareWah={card.pricePerSquareWah}
             pricePerRai={card.pricePerRai}

@@ -9,6 +9,7 @@ export default withMT({
     screens: {
       lg: "990px",
       "3xl": "1600px",
+      phone: "450px",
     },
     extend: {
       fontSize: {
