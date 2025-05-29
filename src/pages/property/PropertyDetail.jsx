@@ -89,7 +89,7 @@ function PropertyDetail() {
                   day: "2-digit",
                 })}
               </div>
-              <div className="flex flex-row gap-x-4 items-center">
+              <div className="flex gap-x-4 items-center">
                 <div className="flex items-center gap-1">
                   <svg
                     width="16"
@@ -121,7 +121,7 @@ function PropertyDetail() {
                     />
                   </svg>
                   <Typography className="!text-sm md:!text-base text-[#294023]">
-                    {data.areaSquareWah} ตารางวา {data.areaRai} ไร่
+                    {data.areaRai} ไร่ {data.areaSquareWah} ตารางวา
                   </Typography>
                 </div>
               </div>
