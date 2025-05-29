@@ -231,7 +231,7 @@ export function PropertyCard({
             ))}
           </div>
         </CardBody>
-        <CardFooter className="flex justify-between phone:items-end flex-col phone:flex-row !py-2">
+        <CardFooter className="flex justify-between phone:items-end flex-col phone:flex-row !pt-2 !pb-6">
           <div className="flex flex-col h-full gap-1 items-start">
             <Typography className="!text-sm lg:!text-body1 text-[#162113]">
               {pricePerSquareWah == 0 ? "-" : formatPrice(pricePerSquareWah)}{" "}
